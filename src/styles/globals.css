@@ -1,0 +1,350 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 18px; /* Increased base font size for better readability */
+  --background: #fefefe;
+  --foreground: #1a1a1a; /* High contrast dark text */
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #2563eb; /* Comfortable blue */
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9; /* Soft gray */
+  --secondary-foreground: #334155;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #e0f2fe; /* Light blue accent */
+  --accent-foreground: #0f172a;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0; /* Soft border */
+  --input: transparent;
+  --input-background: #f8fafc;
+  --switch-background: #cbd5e1;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #3b82f6;
+  --chart-1: #3b82f6; /* Blue */
+  --chart-2: #10b981; /* Green */
+  --chart-3: #8b5cf6; /* Purple */
+  --chart-4: #f59e0b; /* Amber */
+  --chart-5: #ef4444; /* Red */
+  --radius: 0.75rem; /* Slightly more rounded */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #334155;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #475569;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #3b82f6;
+}
+
+.dark {
+  --background: #1e293b; /* Softer dark background */
+  --foreground: #f1f5f9;
+  --card: #334155;
+  --card-foreground: #f1f5f9;
+  --popover: #334155;
+  --popover-foreground: #f1f5f9;
+  --primary: #60a5fa; /* Softer blue in dark mode */
+  --primary-foreground: #1e293b;
+  --secondary: #475569;
+  --secondary-foreground: #e2e8f0;
+  --muted: #475569;
+  --muted-foreground: #94a3b8;
+  --accent: #475569;
+  --accent-foreground: #f1f5f9;
+  --destructive: #f87171; /* Softer red in dark mode */
+  --destructive-foreground: #1e293b;
+  --border: #475569;
+  --input: #334155;
+  --ring: #60a5fa;
+  --chart-1: #60a5fa;
+  --chart-2: #34d399;
+  --chart-3: #a78bfa;
+  --chart-4: #fbbf24;
+  --chart-5: #fb7185;
+  --sidebar: #334155;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #60a5fa;
+  --sidebar-primary-foreground: #1e293b;
+  --sidebar-accent: #475569;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #475569;
+  --sidebar-ring: #60a5fa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Background Grid Pattern */
+.bg-grid-slate-100 {
+  background-image: linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+}
+
+.bg-grid-slate-700\/25 {
+  background-image: linear-gradient(rgba(71, 85, 105, 0.25) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(71, 85, 105, 0.25) 1px, transparent 1px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom shadows */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 640px) {
+  .mobile-padding {
+    padding: 1rem;
+  }
+  
+  .mobile-text {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-card {
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  /* Ensure notification bar is responsive and doesn't overlap */
+  .notification-mobile {
+    padding: 0.5rem 0.75rem;
+    min-height: 3rem;
+    max-height: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .notification-mobile .text-sm {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+  
+  /* Mobile notification expansion */
+  .notification-expanded {
+    min-height: 4rem;
+    max-height: none;
+    overflow: visible;
+  }
+  
+  /* Touch-friendly notification */
+  .notification-touchable {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Better mobile menu button */
+  .mobile-menu-button {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Better mobile hero section */
+  .mobile-hero {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Mobile navigation improvements */
+  .mobile-nav-item {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Improved tablet and mobile touch targets */
+@media (max-width: 768px) {
+  button {
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+  }
+  
+  .mobile-nav {
+    padding: 0.75rem;
+  }
+  
+  /* Better modal handling for mobile/tablet */
+  .modal-mobile {
+    margin: 0.5rem;
+    max-height: calc(100vh - 1rem);
+  }
+  
+  /* Improve touch scrolling */
+  .touch-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Tablet-specific improvements */
+  @media (min-width: 641px) and (max-width: 768px) {
+    .tablet-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tablet-text {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Government color scheme improvements */
+.government-primary {
+  background: linear-gradient(135deg, #1e40af 0%, #059669 100%);
+}
+
+.government-secondary {
+  background: linear-gradient(135deg, #7c3aed 0%, #dc2626 100%);
+}
+
+/* Enhanced dark mode transitions */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Mobile-optimized scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.7);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.7);
+}
